@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import 'best_seller_tem.dart';
@@ -14,7 +13,9 @@ class BookDetailsSection extends StatelessWidget {
       children: [
         Padding(
           padding: EdgeInsets.symmetric(horizontal: width * 0.17),
-          child: const CustomBookImage(),
+          child: const CustomBookImage(
+              imageUrl:
+                  'http://commondatastorage.googleapis.com/codeskulptor-assets/lathrop/explosion_blue.png'),
         ),
         SizedBox(
           height: MediaQuery.of(context).size.height * 0.001,

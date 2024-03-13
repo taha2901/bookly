@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import 'custom_book_image.dart';
@@ -13,7 +12,10 @@ class SimilarBooksListView extends StatelessWidget {
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
-          return const CustomBookImage();
+          return const CustomBookImage(
+            imageUrl:
+                'http://commondatastorage.googleapis.com/codeskulptor-assets/lathrop/explosion_blue.png',
+          );
         },
       ),
     );
