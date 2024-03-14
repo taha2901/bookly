@@ -19,10 +19,11 @@ class SimilarBooksListView extends StatelessWidget {
             height: MediaQuery.of(context).size.height * 0.17,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
+              itemCount: state.books.length,
               itemBuilder: (context, index) {
-                return const CustomBookImage(
+                return  CustomBookImage(
                   imageUrl:
-                      'http://commondatastorage.googleapis.com/codeskulptor-assets/lathrop/explosion_blue.png',
+                      state.books[index].volumeInfo.imageLinks?.thumbnail ?? '',
                 );
               },
             ),
