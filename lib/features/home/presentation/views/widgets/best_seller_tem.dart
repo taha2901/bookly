@@ -1,11 +1,12 @@
+import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/custom_book_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../../core/utils/assets.dart';
 
 class BookItem extends StatelessWidget {
-  const BookItem({super.key});
-
+  const BookItem({super.key, required this.books});
+  final BookModel books;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -16,20 +17,7 @@ class BookItem extends StatelessWidget {
         height: 150,
         child: Row(
           children: [
-            AspectRatio(
-              aspectRatio: 2.5 / 4,
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
-                  image: const DecorationImage(
-                    fit: BoxFit.fill,
-                    image: AssetImage(
-                      AssetsData.testImage,
-                    ),
-                  ),
-                ),
-              ),
-            ),
+            CustomBookImage(imageUrl: books.volumeInfo.imageLinks?.thumbnail ?? ''),
             const SizedBox(
               width: 30,
             ),
@@ -39,19 +27,19 @@ class BookItem extends StatelessWidget {
                 children: [
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.5,
-                    child: const Text(
-                      'Harry Potter And The Goblet Of The Fire ',
+                    child: Text(
+                      books.volumeInfo.title!,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
-                      style: TextStyle(fontSize: 20),
+                      style: const TextStyle(fontSize: 20),
                     ),
                   ),
                   const SizedBox(
                     height: 3,
                   ),
-                  const Text(
-                    'J.K. Rowling',
-                    style: TextStyle(fontSize: 14),
+                   Text(
+                    books.volumeInfo.authors![0],
+                    style:const TextStyle(fontSize: 14),
                   ),
                   const SizedBox(
                     height: 3,
@@ -59,7 +47,7 @@ class BookItem extends StatelessWidget {
                   const Row(
                     children: [
                       Text(
-                        '19.99 \$',
+                        'Free',
                         style: TextStyle(
                             fontSize: 20, fontWeight: FontWeight.bold),
                       ),
@@ -79,8 +67,10 @@ class BookItem extends StatelessWidget {
 
 class BookRating extends StatelessWidget {
   const BookRating(
-      {super.key, this.mainAxisAlignment = MainAxisAlignment.start});
+      {super.key, this.mainAxisAlignment = MainAxisAlignment.start,});
   final MainAxisAlignment mainAxisAlignment;
+  // final int rating;
+  // final int count;
   @override
   Widget build(BuildContext context) {
     return const Row(

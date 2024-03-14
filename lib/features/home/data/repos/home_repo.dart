@@ -11,4 +11,5 @@ abstract class HomeRepo {
   //لو فيه ارجيومنتس بتحددها هنا بس الواضح ان انت هنا هتعمل فيتش بس للكتب المميزه والمباعه
   Future<Either<Failure, List<BookModel>>> fetchNewestBooks();
   Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks();
+  Future<Either<Failure, List<BookModel>>> fetchSimilarBooks({required String category});
 }

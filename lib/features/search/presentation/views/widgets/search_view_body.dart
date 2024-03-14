@@ -50,7 +50,8 @@ class SearchResultItem extends StatelessWidget {
       itemBuilder: (context, index) {
         return const Padding(
           padding: EdgeInsets.symmetric(vertical: 10),
-          child: BookItem(),
+          // child: BookItem(),
+          child: Text('data'),
         );
       },
     );
